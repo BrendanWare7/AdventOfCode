@@ -17,6 +17,12 @@ def flatten(nested_list: list):
     return [item for sublist in nested_list for item in sublist]
 
 
+def batch(iterable, n=1):
+    l = len(iterable)
+    for ndx in range(0, l, n):
+        yield iterable[ndx:min(ndx + n, l)]
+
+
 class keydefaultdict(defaultdict):
     def __missing__(self, key):
         if self.default_factory is None:
